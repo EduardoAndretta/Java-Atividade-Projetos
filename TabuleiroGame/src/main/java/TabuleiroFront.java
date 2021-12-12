@@ -1,25 +1,20 @@
 
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.border.TitledBorder;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 /**
@@ -31,12 +26,16 @@ public class TabuleiroFront extends javax.swing.JFrame {
     public TabuleiroFront() {
         initComponents();
      
-        jButton2.setEnabled(false);
+        buttonDado.setEnabled(false);
         
-        label1.setSize(90,90);
-        resizeImage(label1,"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");      
-
-        
+        label1.setSize(42,42);
+        labelAzul1.setSize(42,42);
+        labelAmarelo1.setSize(42,42);
+        labelCiano1.setSize(42,42);
+        setPlayerLocation(labels, jLabel13, 0, position1, postionToRemove1, Player1, "peaoVerde.png");
+        setPlayerLocation(labelsCiano, jLabel13, 0, position2, postionToRemove2, Player2, "peaoCiano.png");
+        setPlayerLocation(labelsAmarelo, jLabel13, 0, position3, postionToRemove3, Player3, "peaoAmar.png");
+        setPlayerLocation(labelsAzul, jLabel13, 0, position4, postionToRemove4, Player4, "peaoRoxo.png");
     }
     
   
@@ -45,6 +44,7 @@ public class TabuleiroFront extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         FirstPlayerName = new javax.swing.JTextField();
@@ -59,16 +59,33 @@ public class TabuleiroFront extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        buttonDado = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 153, 51));
+        setBackground(new java.awt.Color(204, 204, 255));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Play");
@@ -78,24 +95,24 @@ public class TabuleiroFront extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        FirstPlayerName.setBackground(new java.awt.Color(255, 102, 0));
+        FirstPlayerName.setBackground(new java.awt.Color(204, 204, 255));
         FirstPlayerName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         FirstPlayerName.setForeground(new java.awt.Color(255, 255, 255));
         FirstPlayerName.setBorder(null);
 
-        SecondPlayerName.setBackground(new java.awt.Color(255, 102, 0));
+        SecondPlayerName.setBackground(new java.awt.Color(204, 204, 255));
         SecondPlayerName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         SecondPlayerName.setForeground(new java.awt.Color(255, 255, 255));
         SecondPlayerName.setBorder(null);
 
-        ThirdPlayerName.setBackground(new java.awt.Color(255, 102, 0));
+        ThirdPlayerName.setBackground(new java.awt.Color(204, 204, 255));
         ThirdPlayerName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ThirdPlayerName.setForeground(new java.awt.Color(255, 255, 255));
         ThirdPlayerName.setBorder(null);
 
-        FourthPlayerName.setBackground(new java.awt.Color(255, 102, 0));
+        FourthPlayerName.setBackground(new java.awt.Color(204, 204, 255));
         FourthPlayerName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         FourthPlayerName.setForeground(new java.awt.Color(255, 255, 255));
         FourthPlayerName.setBorder(null);
@@ -170,66 +187,140 @@ public class TabuleiroFront extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Dado");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonDado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buttonDado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonDadoActionPerformed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel10.setText("First Player");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Third Player");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Second Player");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Fourth Player");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Fourth Player");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Fourth Player");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Fourth Player");
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)))))
+                .addGap(21, 21, 21))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(73, 73, 73)
-                                        .addComponent(jLabel11))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonDado, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addGap(33, 33, 33))))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,35 +331,48 @@ public class TabuleiroFront extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel9)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel12)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                        .addComponent(buttonDado, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void resizeImage(JLabel variableJlabel, String photo)
+    
+    public void setPlayerLocation(JLabel[] array, JLabel jlabelPosition, int randomInteger, int position, int positionToRemove, String player, String peaoName){
+
+        if(position >= 29){
+
+            jLabel12.setText(player);
+            array[positionToRemove].setIcon(null);
+            resizeImage(array[29],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\" + peaoName);
+            buttonDado.setEnabled(false);
+            jlabelPosition.setText(String.valueOf(30));
+                    
+        }else if(positionToRemove == position){    
+            resizeImage(array[position],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\" + peaoName);
+            jlabelPosition.setText(String.valueOf(position+1));
+        }else{
+            array[positionToRemove].setIcon(null);
+            resizeImage(array[position],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\" + peaoName);
+            jlabelPosition.setText(String.valueOf(position+1));
+        }  
+
+    }
+    
+    public void resizeImage(JLabel variableJlabel, String photo)
     {  
         BufferedImage icon = null;
         
-        try 
-        {
-            
+        try {
             icon = ImageIO.read(new File(photo));
-        } catch (IOException e) 
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         
@@ -279,6 +383,39 @@ public class TabuleiroFront extends javax.swing.JFrame {
         
         variableJlabel.setIcon(Icon);    
     }
+    
+    public void resizeImageButton(JButton variableJbutton, String photo)
+    {  
+        BufferedImage icon = null;
+        
+        try {
+            icon = ImageIO.read(new File(photo));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        Image dimg = icon.getScaledInstance(variableJbutton.getWidth(), variableJbutton.getHeight(),
+        Image.SCALE_SMOOTH);
+
+        ImageIcon Icon = new ImageIcon(dimg);
+        
+        variableJbutton.setIcon(Icon);    
+    }
+    
+    public void playSound(String file) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(file).getAbsoluteFile());
+
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    }
+    
   
      public void NameVerification(){
          
@@ -339,6 +476,8 @@ public class TabuleiroFront extends javax.swing.JFrame {
            campo30 = new JPanel(),
            campo31 = new JPanel();
     
+    // Label for Icon
+    
     JLabel label1 = new JLabel(), 
            label2 = new JLabel(),
            label3 = new JLabel(), 
@@ -371,13 +510,125 @@ public class TabuleiroFront extends javax.swing.JFrame {
            label30 = new JLabel(),
            label31 = new JLabel();
     
+     JLabel labelAzul1 = new JLabel(), 
+           labelAzul2 = new JLabel(),
+           labelAzul3 = new JLabel(), 
+           labelAzul4 = new JLabel(), 
+           labelAzul5 = new JLabel(),
+           labelAzul6 = new JLabel(), 
+           labelAzul7 = new JLabel(), 
+           labelAzul8 = new JLabel(), 
+           labelAzul9 = new JLabel(), 
+           labelAzul10 = new JLabel(), 
+           labelAzul11 = new JLabel(), 
+           labelAzul12 = new JLabel(), 
+           labelAzul13 = new JLabel(), 
+           labelAzul14 = new JLabel(), 
+           labelAzul15 = new JLabel(),
+           labelAzul16 = new JLabel(), 
+           labelAzul17 = new JLabel(), 
+           labelAzul18 = new JLabel(), 
+           labelAzul19 = new JLabel(),
+           labelAzul20 = new JLabel(),
+           labelAzul21 = new JLabel(),
+           labelAzul22 = new JLabel(), 
+           labelAzul23 = new JLabel(), 
+           labelAzul24 = new JLabel(), 
+           labelAzul25 = new JLabel(),
+           labelAzul26 = new JLabel(), 
+           labelAzul27 = new JLabel(), 
+           labelAzul28 = new JLabel(),
+           labelAzul29 = new JLabel(), 
+           labelAzul30 = new JLabel(),
+           labelAzul31 = new JLabel();
+     
+     JLabel labelAmarelo1 = new JLabel(), 
+           labelAmarelo2 = new JLabel(),
+           labelAmarelo3 = new JLabel(), 
+           labelAmarelo4 = new JLabel(), 
+           labelAmarelo5 = new JLabel(),
+           labelAmarelo6 = new JLabel(), 
+           labelAmarelo7 = new JLabel(), 
+           labelAmarelo8 = new JLabel(), 
+           labelAmarelo9 = new JLabel(), 
+           labelAmarelo10 = new JLabel(), 
+           labelAmarelo11 = new JLabel(), 
+           labelAmarelo12 = new JLabel(), 
+           labelAmarelo13 = new JLabel(), 
+           labelAmarelo14 = new JLabel(), 
+           labelAmarelo15 = new JLabel(),
+           labelAmarelo16 = new JLabel(), 
+           labelAmarelo17 = new JLabel(), 
+           labelAmarelo18 = new JLabel(), 
+           labelAmarelo19 = new JLabel(),
+           labelAmarelo20 = new JLabel(),
+           labelAmarelo21 = new JLabel(),
+           labelAmarelo22 = new JLabel(), 
+           labelAmarelo23 = new JLabel(), 
+           labelAmarelo24 = new JLabel(), 
+           labelAmarelo25 = new JLabel(),
+           labelAmarelo26 = new JLabel(), 
+           labelAmarelo27 = new JLabel(), 
+           labelAmarelo28 = new JLabel(),
+           labelAmarelo29 = new JLabel(), 
+           labelAmarelo30 = new JLabel(),
+           labelAmarelo31 = new JLabel();
+    
+    JLabel labelCiano1 = new JLabel(), 
+           labelCiano2 = new JLabel(),
+           labelCiano3 = new JLabel(), 
+           labelCiano4 = new JLabel(), 
+           labelCiano5 = new JLabel(),
+           labelCiano6 = new JLabel(), 
+           labelCiano7 = new JLabel(), 
+           labelCiano8 = new JLabel(), 
+           labelCiano9 = new JLabel(), 
+           labelCiano10 = new JLabel(), 
+           labelCiano11 = new JLabel(), 
+           labelCiano12 = new JLabel(), 
+           labelCiano13 = new JLabel(), 
+           labelCiano14 = new JLabel(), 
+           labelCiano15 = new JLabel(),
+           labelCiano16 = new JLabel(), 
+           labelCiano17 = new JLabel(), 
+           labelCiano18 = new JLabel(), 
+           labelCiano19 = new JLabel(),
+           labelCiano20 = new JLabel(),
+           labelCiano21 = new JLabel(),
+           labelCiano22 = new JLabel(), 
+           labelCiano23 = new JLabel(), 
+           labelCiano24 = new JLabel(), 
+           labelCiano25 = new JLabel(),
+           labelCiano26 = new JLabel(), 
+           labelCiano27 = new JLabel(), 
+           labelCiano28 = new JLabel(),
+           labelCiano29 = new JLabel(), 
+           labelCiano30 = new JLabel(),
+           labelCiano31 = new JLabel();
+    
+    
     JPanel campos[] = {campo1, campo2, campo3, campo4, campo5, campo6, campo7, campo8, campo9, campo10,
                        campo11, campo12, campo13, campo14, campo15, campo16, campo17, campo18, campo19, campo20,
                        campo21, campo22, campo23, campo24, campo25, campo26, campo27, campo28, campo29, campo30, campo31};
     
+    //Array - Label for Icon
+    
     JLabel labels[] = {label1, label2, label3, label4, label5, label6, label7, label8, label9, label10,
                        label11, label12, label13, label14, label15, label16, label17, label18, label19, label20,
                        label21, label22, label23, label24, label25, label26, label27, label28, label29, label30, label31};
+    
+    JLabel labelsAzul[] = {labelAzul1, labelAzul2, labelAzul3, labelAzul4, labelAzul5, labelAzul6, labelAzul7, labelAzul8, labelAzul9, labelAzul10,
+                       labelAzul11, labelAzul12, labelAzul13, labelAzul14, labelAzul15, labelAzul16, labelAzul17, labelAzul18, labelAzul19, labelAzul20,
+                       labelAzul21, labelAzul22, labelAzul23, labelAzul24, labelAzul25, labelAzul26, labelAzul27, labelAzul28, labelAzul29, labelAzul30, labelAzul31};
+    
+     JLabel labelsAmarelo[] = {labelAmarelo1, labelAmarelo2, labelAmarelo3, labelAmarelo4, labelAmarelo5, labelAmarelo6, labelAmarelo7, labelAmarelo8, labelAmarelo9, labelAmarelo10,
+                       labelAmarelo11, labelAmarelo12, labelAmarelo13, labelAmarelo14, labelAmarelo15, labelAmarelo16, labelAmarelo17, labelAmarelo18, labelAmarelo19, labelAmarelo20,
+                       labelAmarelo21, labelAmarelo22, labelAmarelo23, labelAmarelo24, labelAmarelo25, labelAmarelo26, labelAmarelo27, labelAmarelo28, labelAmarelo29, labelAmarelo30, labelAmarelo31};
+    
+     JLabel labelsCiano[] = {labelCiano1, labelCiano2, labelCiano3, labelCiano4, labelCiano5, labelCiano6, labelCiano7, labelCiano8, labelCiano9, labelCiano10,
+                       labelCiano11, labelCiano12, labelCiano13, labelCiano14, labelCiano15, labelCiano16, labelCiano17, labelCiano18, labelCiano19, labelCiano20,
+                       labelCiano21, labelCiano22, labelCiano23, labelCiano24, labelCiano25, labelCiano26, labelCiano27, labelCiano28, labelCiano29, labelCiano30, labelCiano31};
+    
     
     String messages[] = {"Volte uma casa","Volte duas casas","Volte para o início","Volte cinco casas","Volte quatro casas"};
     
@@ -418,36 +669,47 @@ public class TabuleiroFront extends javax.swing.JFrame {
     
     String winner = "";
     
+    // Tabuleiro JFrame
+    
+    JFrame Tabuleiro = new JFrame();
+    
+    // Array - Dado
+    
+    String[] dados = {"dado1.png","dado2.png","dado3.png","dado4.png","dado5.png","dado5.png"};
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        
-        JFrame Tabuleiro = new JFrame();
         Tabuleiro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Tabuleiro.setSize(1030, 660);
         Tabuleiro.setLocationRelativeTo(null);
         Tabuleiro.setVisible(true);
         
-        int[] horizontalPositions = {10, 110, 210, 310, 410, 510, 610, 710, 810, 910, 910, 810, 710, 610, 510, 410, 310, 210, 110,  10, 10, 110, 210, 310, 410, 510, 610, 710, 810, 910, 0};
-        int[] verticalPositions =   {10,  20,  30,  40,  50,  60,  70,  80,  90, 100, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300,410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 0};
+        int[] horizontalPositions = {10, 110, 210, 310, 410, 510, 610, 710, 810, 910, 910, 810, 710, 610, 510, 410, 310, 210, 110,  10, 10, 110, 210, 310, 410, 510, 610, 710, 810, 910, 910};
+        int[] verticalPositions =   {10,  20,  30,  40,  50,  60,  70,  80,  90, 100, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300,410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 500};
         
         int i = 0;
         
         for (JPanel campo : campos) {       
-            Tabuleiro.add(campo); 
+         
             campo.setLocation(horizontalPositions[i],verticalPositions[i]);
             campo.setSize(100, 100);
-            campo.setBackground(Color.RED);  
-            campo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            campo.setBackground(new Color(56, 167, 255));  
+            campo.setBorder(BorderFactory.createSoftBevelBorder(1, new Color(255, 255, 255), new Color(68, 136, 255)));
             
-            campo.add(labels[i]);
-            labels[i].setLocation(horizontalPositions[i],verticalPositions[i]);
-            labels[i].setSize(90, 90);
-            labels[i].setVisible(true);
+            // Correção de um bug (Label final sem localização)
+
+            if(labels[i] != label31){
+                campo.add(labels[i]);
+                campo.add(labelsAzul[i]);
+                campo.add(labelsCiano[i]);
+                campo.add(labelsAmarelo[i]);
+            }
             
+            Tabuleiro.add(campo); 
             i++;
             
-            // Random messages (Mensagens (Ex. "Volte uma casa"))
-            
+            //Random messages (Mensagens (Ex. "Volte uma casa"))
+//            
 //            if(i == 10 || i== 15 || i == 20 || i == 25 || i == 30){
 //                int max = 28;
 //                int min = 2;
@@ -462,8 +724,8 @@ public class TabuleiroFront extends javax.swing.JFrame {
 //                }
 //            }
         }  
-  
-        jButton2.setEnabled(true);
+        
+        buttonDado.setEnabled(true);
         jButton1.setEnabled(false);
         
         FirstPlayerName.setEditable(false);
@@ -476,121 +738,63 @@ public class TabuleiroFront extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDadoActionPerformed
         
-        for(JLabel label : labels){     
-            label.setSize(90, 90);     
-        }
-
-        for(int e = 0; e == 0; e++){
-
-            label1.setIcon(null);
-        }
-
+        
+        for(JPanel campo : campos) { campo.setLayout(new GridLayout(2,2)); }
+        for(JLabel label : labels){ label.setSize(42, 42); }
+        for(JLabel label : labelsAmarelo){ label.setSize(42, 42); }
+        for(JLabel label : labelsAzul){ label.setSize(42, 42);}
+        for(JLabel label : labelsCiano){ label.setSize(42, 42); }      
+     
         contPlayer++;
 
-        if(position1 != 30 || position2 != 30 || position3 != 30 || position4 != 30){
+        // Random Number
+        int max = 6;
+        int min = 1;
+        int randomInteger = (int)Math.floor(Math.random()*(max-min+1)+min);
+        
+        // Icon - Dado Image
+        
+        for(int dado = 1; dado < 7; dado++){
+            if(randomInteger == dado){       
+                resizeImageButton(buttonDado, "C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\dado"+dado+".png");
+                playSound("C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\audio\\dadoRolando.wav");
+            }
+        }
 
-            // Random Number
-
-            int max = 6;
-            int min = 0;
-            int randomInteger = (int)Math.floor(Math.random()*(max-min+1)+min);
-
-            jLabel5.setText(String.valueOf(randomInteger));
-
+        // Value - Dado
+        
+        jLabel5.setText(String.valueOf(randomInteger));
+ 
             switch(contPlayer){
 
                 case 1:
                     position1 += randomInteger;
-
-                    if(position1 >= 30){    
-                        labels[postionToRemove1].setIcon(null);
-                        resizeImage(labels[29],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peaoVerde.png");
-                        jButton2.setEnabled(false);
-                    }else if(postionToRemove1 == position1){    
-                        resizeImage(labels[position1],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peaoVerde.png");
-                    }else{
-                        labels[postionToRemove1].setIcon(null);
-                        resizeImage(labels[position1],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peaoVerde.png");
-
-                    }
+                    setPlayerLocation(labels, jLabel13, randomInteger, position1, postionToRemove1, Player1, "peaoVerde.png");
                     postionToRemove1 = position1;
                     break; 
 
                 case 2:
                     position2 += randomInteger;
-
-                    if(position2 >= 30){    
-                        labels[postionToRemove2].setIcon(null);
-                        resizeImage(labels[29],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-                        jButton2.setEnabled(false);
-                    }else if(postionToRemove2 == position2){    
-                        resizeImage(labels[position2],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-                    }else{
-                        labels[postionToRemove2].setIcon(null);
-                        resizeImage(labels[position2],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-
-                    }
+                    setPlayerLocation(labelsCiano, jLabel6, randomInteger, position2, postionToRemove2, Player2, "peaoCiano.png");
                     postionToRemove2 = position2;
                     break; 
 
                 case 3:
-                   position3 += randomInteger;
-
-                    if(position3 >= 30){    
-                        labels[postionToRemove3].setIcon(null);
-                        resizeImage(labels[29],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-                        jButton2.setEnabled(false);
-                    }else if(postionToRemove3 == position3){    
-                        resizeImage(labels[position3],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-                    }else{
-                        labels[postionToRemove3].setIcon(null);
-                        resizeImage(labels[position3],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-
-                    }
+                    position3 += randomInteger;
+                    setPlayerLocation(labelsAmarelo, jLabel14, randomInteger, position3, postionToRemove3, Player3, "peaoAmar.png");
                     postionToRemove3 = position3;
                     break; 
 
                 case 4:
                     position4 += randomInteger;
-
-                    if(position4 >= 30){    
-                        labels[postionToRemove4].setIcon(null);
-                        resizeImage(labels[29],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-                        jButton2.setEnabled(false);
-                    }else if(postionToRemove4 == position4){    
-                        resizeImage(labels[position4],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-                    }else{
-                        labels[postionToRemove4].setIcon(null);
-                        resizeImage(labels[position4],"C:\\Users\\Eduardo Andretta\\Documents\\TabuleiroGame\\src\\main\\java\\images\\peao.png");
-
-                    }
+                    setPlayerLocation(labelsAzul, jLabel7, randomInteger, position4, postionToRemove4, Player4, "peaoRoxo.png");
                     postionToRemove4 = position4;
-
-                    // Reset
-
                     contPlayer = 0;
                     break;
             }
-
-        }else{
-
-            for(int i = 0; i < 3; i++){
-
-                if(positions[i] >= 30){
-
-                    winner = players[i];
-
-                } 
-            }
-
-            jLabel12.setText(winner);
-            jButton2.setEnabled(false);
-
-        }  
-     
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonDadoActionPerformed
 
     public static void main(String args[]) {
        
@@ -606,19 +810,26 @@ public class TabuleiroFront extends javax.swing.JFrame {
     private javax.swing.JTextField FourthPlayerName;
     private javax.swing.JTextField SecondPlayerName;
     private javax.swing.JTextField ThirdPlayerName;
+    private javax.swing.JButton buttonDado;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
