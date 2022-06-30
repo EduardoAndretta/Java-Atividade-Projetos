@@ -513,32 +513,27 @@ public class CadastroFrontTable extends javax.swing.JFrame {
             productModel.addColumn("Código");
             productModel.addColumn("Preço");
             productModel.addColumn("Quantidade");
-
-            tableConstruction = true;
+            productTable.setShowHorizontalLines(true);
+            productTable.setShowVerticalLines(true);
+            productTable.setGridColor(Color.BLACK);
+            productTable.setCellSelectionEnabled(true);
+            productPanel.add(new JScrollPane(productTable));
+            frame.add(productPanel);
+            frame.setSize(550, 400);
+            frame.setVisible(true);
             
+            tableConstruction = true;  
         }
 
-        
-            
-        JFrame frame = new JFrame();
-        JPanel productPanel = new JPanel();
-        JTable productTable = new JTable();
- 
         productTable.setModel(productModel);
-        productTable.setShowHorizontalLines(true);
-        productTable.setShowVerticalLines(true);
-        productTable.setGridColor(Color.BLACK);
-        productTable.setCellSelectionEnabled(true);
-        productPanel.add(new JScrollPane(productTable));
-        frame.add(productPanel);
-        frame.setSize(550, 400);
-        frame.setVisible(true);
-  
-    
     } 
-  
  
     //Variáveis Gerais - Escopo público
+    
+    JFrame frame = new JFrame();
+    JPanel productPanel = new JPanel();
+    JTable productTable = new JTable();
+    
     
     //Painel de Controle
     
@@ -693,7 +688,7 @@ public class CadastroFrontTable extends javax.swing.JFrame {
         productModel.setNumRows(0);
         prodList.clear();
 
-        if (quantidadeExcedente == 0){
+        if (quantidadeExcedente > 0){
 
             for(int i = 0; i < indexArray; i++){
                 
@@ -1072,13 +1067,99 @@ public class CadastroFrontTable extends javax.swing.JFrame {
 
         JPanel panel = new JPanel();
 
-        Color BlackCor = new Color(127, 127, 127);
+        Color BlackCor = new Color(56, 56, 59);
         panel.setBackground(BlackCor);
 
         Border border = new LineBorder(Color.BLACK, 4, true);
         panel.setBorder(border);
 
-        Color PurpleCor = new Color(187, 134, 252);
+        Color PurpleCor = new Color(178, 133, 255);
+        Color GreyCor = new Color(146, 146, 146);
+        Color GreyCorLight = new Color(70, 70, 70);
+
+        jPanel1.setBackground(BlackCor);
+        jPanel2.setBackground(BlackCor);
+        jPanel3.setBackground(BlackCor);
+
+        jLabel1.setForeground(PurpleCor);
+        jLabel2.setForeground(PurpleCor);
+        jLabel3.setForeground(PurpleCor);
+        jLabel4.setForeground(PurpleCor);
+        jLabel5.setForeground(PurpleCor);
+        jLabel6.setForeground(PurpleCor);
+        jLabel7.setForeground(PurpleCor);
+        jLabel8.setForeground(PurpleCor);
+        jLabel9.setForeground(PurpleCor);
+        jLabel10.setForeground(PurpleCor);
+        jLabel11.setForeground(PurpleCor);
+        jLabel13.setForeground(PurpleCor);
+
+        jLabel1.setBackground(GreyCor);
+        jLabel2.setBackground(GreyCor);
+        jLabel3.setBackground(GreyCor);
+        jLabel4.setBackground(GreyCor);
+        jLabel5.setBackground(GreyCor);
+        jLabel6.setBackground(GreyCor);
+        jLabel7.setBackground(GreyCor);
+        jLabel8.setBackground(GreyCor);
+        jLabel9.setBackground(GreyCor);
+        jLabel10.setBackground(GreyCor);
+        jLabel11.setBackground(GreyCor);
+        jLabel13.setBackground(GreyCor);
+
+        jButton1.setBackground(GreyCorLight);
+        jButton2.setBackground(GreyCorLight);
+        jButton3.setBackground(GreyCorLight);
+        jButton4.setBackground(GreyCorLight);
+        jButton5.setBackground(GreyCorLight);
+        jButton6.setBackground(GreyCorLight);
+        jButton7.setBackground(GreyCorLight);
+        jButton8.setBackground(GreyCorLight);
+        jButton9.setBackground(GreyCorLight);
+        jButton10.setBackground(GreyCorLight);
+        jButton11.setBackground(GreyCorLight);
+
+        jButton1.setForeground(PurpleCor);
+        jButton2.setForeground(PurpleCor);
+        jButton3.setForeground(PurpleCor);
+        jButton4.setForeground(PurpleCor);
+        jButton5.setForeground(PurpleCor);
+        jButton6.setForeground(PurpleCor);
+        jButton7.setForeground(PurpleCor);
+        jButton8.setForeground(PurpleCor);
+        jButton9.setForeground(PurpleCor);
+        jButton10.setForeground(PurpleCor);
+        jButton11.setForeground(PurpleCor);
+        
+        jTextField1.setBackground(GreyCor);
+        jTextField2.setBackground(GreyCor);
+        jTextField3.setBackground(GreyCor);
+        jTextField4.setBackground(GreyCor);
+        jTextField5.setBackground(GreyCor);
+        jTextField6.setBackground(GreyCor);
+        jTextField7.setBackground(GreyCor);
+        jTextField8.setBackground(GreyCor);
+        jTextField9.setBackground(GreyCor);
+        jTextField10.setBackground(GreyCor);
+     
+
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+
+        //----//Light Mode//----//
+        
+        //----//Black Mode//----//
+
+        JPanel panel = new JPanel();
+
+        Color BlackCor = new Color(32, 32, 32);
+        panel.setBackground(BlackCor);
+
+        Border border = new LineBorder(Color.BLACK, 4, true);
+        panel.setBorder(border);
+
+        Color PurpleCor = new Color(56, 56, 59);
         Color GreyCor = new Color(153, 157, 160);
         Color GreyCorLight = new Color(175, 175, 175);
 
@@ -1135,12 +1216,6 @@ public class CadastroFrontTable extends javax.swing.JFrame {
         jButton9.setForeground(PurpleCor);
         jButton10.setForeground(PurpleCor);
         jButton11.setForeground(PurpleCor);
-
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-
-        //----//Light Mode//----//
 
     }//GEN-LAST:event_jButton11ActionPerformed
 
